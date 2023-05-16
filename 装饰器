@@ -1,0 +1,45 @@
+def sleep():
+    import random
+    import time
+    print("睡眠中...")
+    time.sleep(random.randint(1, 5))
+
+
+# sleep()
+
+
+def outer(func):
+    def inner():
+        print("睡眠开始..")
+        func()
+        print("睡眠结束..")
+
+    return inner
+
+
+fn = outer(sleep)
+fn()
+
+print("=====")
+
+
+def outer2(func):
+    def inner():
+        print("睡眠2开始..")
+        func()
+        print("睡眠2结束..")
+
+    return inner
+
+
+@outer2
+def sleep2():
+    import random
+    import time
+    print("睡眠2中...")
+    time.sleep(random.randint(1, 5))
+
+
+# sleep()
+
+sleep2()
